@@ -8,7 +8,7 @@ cd $BUILD_DIR
 
 echo "#################################################"
 echo "Now deploying to GitHub Pages..."
-remote_repo="https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" && \
+remote_repo="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
 remote_branch="gh-pages" && \
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
