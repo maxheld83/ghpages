@@ -3,7 +3,7 @@
 set -e
 
 echo "#################################################"
-echo "Changing directory to the 'BUILD_DIR...' $BUILD_DIR"
+echo "Changing directory to 'BUILD_DIR' $BUILD_DIR ..."
 cd "$BUILD_DIR"
 
 echo "#################################################"
