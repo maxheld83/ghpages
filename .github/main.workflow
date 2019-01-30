@@ -5,7 +5,7 @@ workflow "Test ghpages" {
 
 action "Write sha" {
   uses = "actions/bin/sh@db72a46c8ce298e5d2c3a51861e20c455581524f"
-  args = ["echo $GITHUB_SHA >> public/index2.html"]
+  args = ["echo $GITHUB_SHA >> public/sha.html"]
 }
 
 action "Deploy to GitHub Pages" {
