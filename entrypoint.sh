@@ -4,7 +4,7 @@ set -e
 
 echo "#################################################"
 echo "Changing directory to 'BUILD_DIR' $BUILD_DIR ..."
-cd "$BUILD_DIR"
+cd $BUILD_DIR
 
 echo "#################################################"
 echo "Now deploying to GitHub Pages..."
