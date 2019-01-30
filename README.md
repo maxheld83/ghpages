@@ -1,5 +1,7 @@
 # Deploy arbitrary static assets to GitHub Actions
 
+**NOT WORKING YET**
+
 [![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghaction-ghpages)](https://github.com/maxheld83/ghaction-ghpages/actions)
 
 This action simply lets your deploy arbitrary folders of static content from your actions working directory (`/github/workspace`) to [GitHub pages](https://pages.github.com).
