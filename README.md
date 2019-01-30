@@ -1,6 +1,6 @@
 # Deploy arbitrary static assets to GitHub Actions
 
-**NOT WORKING YET**
+**Below instruction on `GITHUB_TOKEN` are wrong: see https://github.com/maxheld83/ghaction-ghpages/issues/1. Will fix readme asap.**
 
 [![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghaction-ghpages)](https://github.com/maxheld83/ghaction-ghpages/actions)
 
