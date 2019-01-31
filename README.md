@@ -44,7 +44,7 @@ There are none.
 
 ```
 action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghaction-ghpages"
+  uses = "maxheld83/ghaction-ghpages@v0.1"
   env = {
     BUILD_DIR = "public/"
   }
