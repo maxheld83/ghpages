@@ -1,6 +1,9 @@
-# Deploy arbitrary static assets to GitHub Actions
+# GitHub Action to Deploy Static Assets to GitHub Actions
 
-[![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghaction-ghpages)](https://github.com/maxheld83/ghaction-ghpages/actions)
+[![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghpages)](https://github.com/maxheld83/ghpages/actions)
+[![GitHubActions](https://img.shields.io/badge/as%20seen%20on%20-GitHubActions-blue.svg)](https://github-actions.netlify.com/ghpages)
+
+<img src="https://github.com/maxheld83/ghpages/blob/master/action-running.gif?raw=true" align="right" width=200/>
 
 This action simply lets you deploy arbitrary folders of static content from your workflow's working directory (`/github/workspace`) to [GitHub pages](https://pages.github.com).
 This works by having your action instance `git push` your chosen asset folder (`BUILD_DIR`) to the `gh-pages` branch of your GitHub repository for the `gh-pages` branch to be served.
@@ -14,7 +17,7 @@ This action isn't that, though I've borrowed much of the git action from these w
 
 ## Secrets
 
-<img src="action-config.png" align="right" width=200/>
+<img src="https://github.com/maxheld83/ghpages/blob/master/action-config.png?raw=true" align="right" width=200/>
 
 Deployment to GitHub pages happens by `git push`ing to the `gh-pages` branch.
 To authorise this, the GitHub action needs a secret.
@@ -35,16 +38,16 @@ You can also pass `/.` if you want to push your repository root.
 
 ## Arguments
 
-There are none.
+None.
 
 
 ## Example Usage
 
-<img src="action-in-use.png" align="right" width=200/>
+<img src="https://github.com/maxheld83/ghpages/blob/master/action-in-use.png?raw=true" align="right" width=200/>
 
 ```
 action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghaction-ghpages@v0.1"
+  uses = "maxheld83/ghpages@v0.1.1"
   env = {
     BUILD_DIR = "public/"
   }
