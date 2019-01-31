@@ -17,5 +17,5 @@ git add . && \
 git commit -m 'Deploy to GitHub pages' && \
 git push --force $remote_repo master:$remote_branch && \
 rm -fr .git && \
-cd .. && \
+cd $GITHUB_WORKSPACE && \
 echo "Content of $BUILD_DIR has been deployed to GitHub Pages."
