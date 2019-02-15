@@ -8,14 +8,21 @@ cd $BUILD_DIR
 
 echo "#################################################"
 echo "Now deploying to GitHub Pages..."
-remote_repo="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
-remote_branch="gh-pages" && \
+REMOTE_REPO="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
+REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
+OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" && \
+GHIO="${OWNER}.github.io" && \
+if [[ "$REPONAME" == "$GHIO" ]]; then
+  REMOTE_BRANCH="master"
+else
+  REMOTE_BRANCH="gh-pages"
+fi && \
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
 git add . && \
 git commit -m 'Deploy to GitHub pages' && \
-git push --force $remote_repo master:$remote_branch && \
+git push --force $REMOTE_REPO master:$REMOTE_BRANCH && \
 rm -fr .git && \
 cd $GITHUB_WORKSPACE && \
 echo "Content of $BUILD_DIR has been deployed to GitHub Pages."
