@@ -20,6 +20,10 @@ fi && \
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
+if [ -z "$(git status --porcelain)" ]; then
+    echo "Nothing to commit" && \
+    exit 78
+fi && \
 git add . && \
 git commit -m 'Deploy to GitHub pages' && \
 git push --force $REMOTE_REPO HEAD:$REMOTE_BRANCH && \
