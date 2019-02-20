@@ -9,6 +9,8 @@ This action simply lets you deploy arbitrary folders of static content from your
 This works by having your action instance `git push` your chosen asset folder (`BUILD_DIR`) to the `gh-pages` branch of your GitHub repository for the `gh-pages` branch to be served.
 If you are running this action inside an [organization or user repository](https://help.github.com/articles/user-organization-and-project-pages/) (named `username/username.github.io`) it will deploy to the `master` branch instead.
 
+Remember to add appropriate [filter action](https://github.com/actions/bin/tree/master/filter) as dependencies on this action to avoid deploying from all branches, as well as to avoid "infinite loops" where the deployment itself would trigger another run.
+
 Remember that you may also have to adjust your [repository settings](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).
 
 Because this action deploys to separate, "deploy-only" branches, you can not use it if you want to deploy from a repo subdirectory such as `docs/`.
