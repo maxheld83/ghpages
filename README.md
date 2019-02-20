@@ -55,7 +55,7 @@ None.
 
 ```
 action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghpages@v0.2.0"
+  uses = "maxheld83/ghpages@v0.2.1"
   env = {
     BUILD_DIR = "public/"
   }
