@@ -1,7 +1,7 @@
 # GitHub Action to Deploy Static Assets to GitHub Actions
 
 [![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghpages)](https://github.com/maxheld83/ghpages/actions)
-[![GitHubActions](https://img.shields.io/badge/as%20seen%20on%20-GitHubActions-blue.svg)](https://github-actions.netlify.com/ghpages)
+[![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/github-pages-deploy)
 
 <img src="https://github.com/maxheld83/ghpages/blob/master/action-running.gif?raw=true" align="right" width=200/>
 
