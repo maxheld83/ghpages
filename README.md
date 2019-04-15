@@ -25,8 +25,6 @@ This action isn't that, though I've borrowed much of the git action from these w
 
 ## Secrets
 
-<img src="https://github.com/maxheld83/ghpages/blob/master/action-config.png?raw=true" align="right" width=200/>
-
 Deployment to GitHub pages happens by `git push`ing to the `gh-pages` (or `master`) branch.
 To authorise this, the GitHub action needs access to the `GITHUB_TOKEN` secret.
 
