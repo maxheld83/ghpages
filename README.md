@@ -28,14 +28,7 @@ This action isn't that, though I've borrowed much of the git action from these w
 <img src="https://github.com/maxheld83/ghpages/blob/master/action-config.png?raw=true" align="right" width=200/>
 
 Deployment to GitHub pages happens by `git push`ing to the `gh-pages` (or `master`) branch.
-To authorise this, the GitHub action needs a secret.
-For now, somewhat confusingly, the `GITHUB_TOKEN` [available for every repo](https://developer.github.com/actions/creating-workflows/storing-secrets/) *does* suffice to push to `gh-pages`, but *does not* suffice to trigger a  page build on GitHub, or even propagate the content to the GitHub content-delivery network.
-
-You therefore **have to [create a custom Personal Access Token (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)** much like you'd do for external services (say, Travis).
-You then have to paste this token into the GitHub UI as a secret under the name `GH_PAT` (repository settings/secrets) and call it in the action as in the below.
-
-I've asked GitHub to streamline this process.
-The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpages/issues/1).
+To authorise this, the GitHub action needs access to the `GITHUB_TOKEN` secret.
 
 
 ## Environment Variables
@@ -59,6 +52,6 @@ action "Deploy to GitHub Pages" {
   env = {
     BUILD_DIR = "public/"
   }
-  secrets = ["GH_PAT"]
+  secrets = ["GITHUB_TOKEN"]
 }
 ```
