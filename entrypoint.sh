@@ -25,7 +25,7 @@ if [ -z "$(git status --porcelain)" ]; then
     exit 0
 fi && \
 git add . && \
-git commit -m 'Deploy to GitHub pages' && \
+git commit -m 'Deploy to GitHub Pages' && \
 git push --force $REMOTE_REPO master:$REMOTE_BRANCH && \
 rm -fr .git && \
 cd $GITHUB_WORKSPACE && \
