@@ -28,7 +28,7 @@ fi && \
 git add . && \
 git commit -m 'Deploy to GitHub pages' && \
 git push --force $REMOTE_REPO master:$REMOTE_BRANCH && \
-curl -XPOST -H"Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds $$ \ # https://git.io/fjsFk
+curl -XPOST -H"Authorization: token ${GITHUB_TOKEN}" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds && \ # https://git.io/fjsFk
 rm -fr .git && \
 cd $GITHUB_WORKSPACE && \
 echo "Content of $BUILD_DIR has been deployed to GitHub Pages."
