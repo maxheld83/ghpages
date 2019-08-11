@@ -1,4 +1,4 @@
-# GitHub Action to Deploy Static Assets to GitHub Actions
+# GitHub Action to Deploy Static Assets to GitHub Pages
 
 [![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghpages)](https://github.com/maxheld83/ghpages/actions)
 [![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/github-pages-deploy)
