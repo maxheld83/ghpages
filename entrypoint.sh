@@ -1,6 +1,7 @@
 #!/bin/sh
 
 set -e
+set -u
 
 echo "#################################################"
 echo "Changing directory to 'BUILD_DIR' $BUILD_DIR ..."
@@ -8,7 +9,7 @@ cd $BUILD_DIR
 
 echo "#################################################"
 echo "Now deploying to GitHub Pages..."
-REMOTE_REPO="https://${GH_PAT}@github.com/${GITHUB_REPOSITORY}.git" && \
+REMOTE_REPO="https://${GH_PAT:-"x-access-token:$GITHUB_TOKEN"}@github.com/${GITHUB_REPOSITORY}.git" && \
 REPONAME="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 2)" && \
 OWNER="$(echo $GITHUB_REPOSITORY| cut -d'/' -f 1)" && \
 GHIO="${OWNER}.github.io" && \
@@ -27,6 +28,7 @@ fi && \
 git add . && \
 git commit -m 'Deploy to GitHub Pages' && \
 git push --force $REMOTE_REPO master:$REMOTE_BRANCH && \
+curl -XPOST -H"Authorization: token ${GITHUB_TOKEN}" -H"Accept: application/vnd.github.mister-fantastic-preview+json" https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/builds && \ # https://git.io/fjsFk
 rm -fr .git && \
 cd $GITHUB_WORKSPACE && \
 echo "Content of $BUILD_DIR has been deployed to GitHub Pages."
