@@ -38,7 +38,7 @@ function execPromise(command: string):Promise<String> {
 			return;
 		}
 
-		await execPromise('git add');
+		await execPromise('git add .');
 		await execPromise('git commit -m "Deploy to GitHub Pages"');
 		await execPromise(`git push --force ${gitUrl} master:${deployBranch}`);
 
