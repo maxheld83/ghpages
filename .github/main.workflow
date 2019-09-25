@@ -1,18 +1,20 @@
-workflow "Test ghpages" {
-  on = "push"
-  resolves = ["Deploy to GitHub Pages"]
-}
+name: Deploy Site to GitHub Pages
 
-action "Write sha" {
-  uses = "actions/bin/sh@db72a46c8ce298e5d2c3a51861e20c455581524f"
-  args = ["echo $GITHUB_SHA >> public/index.html"]
-}
+on:
+  push:
+    branches:
+    - master
 
-action "Deploy to GitHub Pages" {
-  uses = "./"
-  needs = "Write sha"
-  env = {
-    BUILD_DIR = "public/"
-  }
-  secrets = ["GH_PAT"]
-}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy site to gh-pages branch
+        uses: maxheld83/ghpages@v1.0.0
+        with:
+          repo-token: ${{ secrets.GH_PAT }}

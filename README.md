@@ -1,15 +1,15 @@
 # GitHub Action to Deploy Static Assets to GitHub Pages
 
+> This action lets you deploy folders of static content to [GitHub pages](https://pages.github.com).
+
 [![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghpages)](https://github.com/maxheld83/ghpages/actions)
 [![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/github-pages-deploy)
 
-<img src="https://github.com/maxheld83/ghpages/blob/master/action-running.gif?raw=true" align="right" width=200/>
+<!-- New picture -->
 
-This action simply lets you deploy arbitrary folders of static content from your workflow's working directory (`/github/workspace`) to [GitHub pages](https://pages.github.com).
-This works by having your action instance `git push` your chosen asset folder (`BUILD_DIR`) to the `gh-pages` branch of your GitHub repository for the `gh-pages` branch to be served.
-If you are running this action inside an [organization or user repository](https://help.github.com/articles/user-organization-and-project-pages/) (named `username/username.github.io`) it will deploy to the `master` branch instead.
+This works by having your GitHub action `git push` your chosen asset folder (`BUILD_DIR`) to the `gh-pages` branch of your GitHub repository for the `gh-pages` branch to be served.
 
-Remember to add appropriate [filter action](https://github.com/actions/bin/tree/master/filter) as dependencies on this action to avoid deploying from all branches, as well as to avoid "infinite loops" where the deployment itself would trigger another run.
+<!-- Content around filtering action to build site -->
 
 Remember that you may also have to adjust your [repository settings](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).
 
@@ -25,40 +25,39 @@ This action isn't that, though I've borrowed much of the git action from these w
 
 ## Secrets
 
-<img src="https://github.com/maxheld83/ghpages/blob/master/action-config.png?raw=true" align="right" width=200/>
+<!-- New image -->
 
-Deployment to GitHub pages happens by `git push`ing to the `gh-pages` (or `master`) branch.
-To authorise this, the GitHub action needs a secret.
-For now, somewhat confusingly, the `GITHUB_TOKEN` [available for every repo](https://developer.github.com/actions/creating-workflows/storing-secrets/) *does* suffice to push to `gh-pages`, but *does not* suffice to trigger a  page build on GitHub, or even propagate the content to the GitHub content-delivery network.
+Deployment to GitHub pages happens by `git push`ing to the `gh-pages` (or `master`) branch. The GitHub action needs a secret to authorise the deployment.
 
-You therefore **have to [create a custom Personal Access Token (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)** much like you'd do for external services (say, Travis).
-You then have to paste this token into the GitHub UI as a secret under the name `GH_PAT` (repository settings/secrets) and call it in the action as in the below.
+For now, the `GITHUB_TOKEN` [available for every repo](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables) *does*  push to `gh-pages`, but *does not* trigger a page build on GitHub, or even send the new content to the GitHub content-delivery network.
 
-I've asked GitHub to streamline this process.
-The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpages/issues/1).
+You **have to [create a custom Personal Access Token (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)** much like you'd do for external services (say, Travis). You then have to paste this token into the GitHub UI as a secret under the name `GH_PAT` (repository settings/secrets) and call it in the action as in the below.
 
-
-## Environment Variables
-
-Just `BUILD_DIR`, the build directory relative to your repository root.
-You can also pass `.` if you want to push your repository root.
-
-
-## Arguments
-
-None.
-
+I've asked GitHub to streamline this process. The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpages/issues/1).
 
 ## Example Usage
 
-<img src="https://github.com/maxheld83/ghpages/blob/master/action-in-use.png?raw=true" align="right" width=200/>
+<!-- New image -->
 
-```
-action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghpages@v0.2.1"
-  env = {
-    BUILD_DIR = "public/"
-  }
-  secrets = ["GH_PAT"]
-}
+```yml
+name: Deploy Site to GitHub Pages
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: npm install and build
+        run: |
+          npm install
+          npm run build
+      - name: Deploy site to gh-pages branch
+        uses: maxheld83/ghpages@v1.0.0
+        with:
+          repo-token: ${{ secrets.GH_PAT }}
 ```

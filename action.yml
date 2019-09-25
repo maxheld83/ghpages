@@ -1,0 +1,17 @@
+name: 'GitHub Pages Deploy'
+description: 'Deploy static assets to GitHub Pages.'
+author: 'Maximilian Held <info@maxheld.de>'
+inputs:
+  repo-token:
+    description: 'The personal access token secret can be passed in using {{ secrets.GH_PAT }}'
+    required: true
+  site-directory:
+    description: 'The directory for the built website'
+    default: '_site'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'

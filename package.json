@@ -1,0 +1,46 @@
+{
+  "name": "ghpages",
+  "version": "1.0.0",
+  "description": "Deploy static assets to GitHub Pages.",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "watch": "ncc build index.ts --watch --minify",
+    "build": "ncc build index.ts --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-page/automate-project-columns.git"
+  },
+  "keywords": [
+    "github-actions",
+    "github-projects",
+    "issues",
+    "pulls",
+    "automation",
+    "columns"
+  ],
+  "author": "Maximilian Held <info@maxheld.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxheld83/ghpages/issues"
+  },
+  "homepage": "https://github.com/maxheld83/ghpages#readme",
+  "dependencies": {
+    "@actions/core": "^1.0.0",
+    "@actions/github": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.7",
+    "@zeit/ncc": "^0.20.4",
+    "husky": "^3.0.5"
+  },
+  "files": [
+    "dist/index.js"
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run build && git add ./dist/index.js"
+    }
+  }
+}
