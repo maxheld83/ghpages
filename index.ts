@@ -30,7 +30,6 @@ function execPromise(command: string):Promise<String> {
 		await execPromise('git init');
 		await execPromise(`git config user.name ${pusher.name}`);
 		await execPromise(`git config user.email ${pusher.email}`);
-		await execPromise(`git config user.name ${pusher.name}`);
 
 		const gitStatus = await execPromise(`git status --porcelain`);
 		if(gitStatus){
