@@ -9,5 +9,7 @@ LABEL "com.github.actions.description"="Deploy static assets to GitHub Pages."
 LABEL "com.github.actions.icon"="upload-cloud"
 LABEL "com.github.actions.color"="blue"
 
+RUN apt-get update; apt-get install curl
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
