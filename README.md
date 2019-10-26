@@ -30,7 +30,7 @@ on github which publishs the repos project pages site.
 
 If your repo does not have a project pages site yet,
 for this to work you will need to push to pages from 
-an account that has admin privilages on the repo, the eaisest 
+an account that has admin privileges on the repo, the easiest
 way to do this is to clone the repo using the account:
 
 ```bash
