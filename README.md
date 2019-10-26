@@ -22,6 +22,34 @@ This action isn't that, though I've borrowed much of the git action from these w
 
 **This action will not build anything, it just deploys.**
 
+**This action cannot publish a pages site that does not exist**
+
+Currently the Github Actions feature is still in __Beta__, 
+and while it is actions are unable to trigger the initial build 
+on github which publishs the repos project pages site. 
+
+If your repo does not have a project pages site yet,
+for this to work you will need to push to pages from 
+an account that has admin privileges on the repo, the easiest
+way to do this is to clone the repo using the account:
+
+```bash
+$ git clone https://YOUR_USERNAME:YOUR_PASSWORD@github.com/YOUR_USERNAME/YOUR_REPO
+```
+
+Then add and commit the files to be published, ie if i wanted to serve my new docs folder:
+
+```bash
+$ git add -A docs  
+$ git commit -m 'YOUR COMMIT MESSAGE'
+```
+
+And finally, you can publish it to github pages using the `gh-pages` command line tool:
+
+```bash
+$ npx gh-pages -d docs
+```
+
 
 ## Secrets
 
