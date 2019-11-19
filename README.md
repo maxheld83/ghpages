@@ -1,6 +1,5 @@
 # GitHub Action to Deploy Static Assets to GitHub Pages
 
-[![Actions Status](https://wdp9fww0r9.execute-api.us-west-2.amazonaws.com/production/badge/maxheld83/ghpages)](https://github.com/maxheld83/ghpages/actions)
 [![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/github-pages-deploy)
 
 <img src="https://github.com/maxheld83/ghpages/blob/master/action-running.gif?raw=true" align="right" width=200/>
@@ -54,11 +53,9 @@ None.
 <img src="https://github.com/maxheld83/ghpages/blob/master/action-in-use.png?raw=true" align="right" width=200/>
 
 ```
-action "Deploy to GitHub Pages" {
-  uses = "maxheld83/ghpages@v0.2.1"
-  env = {
-    BUILD_DIR = "public/"
-  }
-  secrets = ["GH_PAT"]
-}
+- name: Deploy to GitHub Pages
+  uses: maxheld83/ghpages@v0.2.1
+  if: success() && github.event == 'push' && github.ref == "master"
+  env: 
+    BUILD_DIR: "public/"
 ```
