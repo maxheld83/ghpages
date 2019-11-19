@@ -55,7 +55,7 @@ None.
 ```
 - name: Deploy to GitHub Pages
   uses: maxheld83/ghpages@v0.2.1
-  if: success() && github.event == 'push' && github.ref == "master"
+  if: success() && github.event == 'push' && github.ref == 'master'
   env: 
-    BUILD_DIR: "public/"
+    BUILD_DIR: 'public/'
 ```
