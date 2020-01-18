@@ -15,6 +15,6 @@ jobs:
           npm install
           npm run build
       - name: Deploy site to gh-pages branch
-        uses: maxheld83/ghpages@v1.0.0
+        uses: alex-page/ghpages
         with:
           repo-token: ${{ secrets.GH_PAT }}
