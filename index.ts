@@ -13,7 +13,7 @@ const gitUrl = `https://${repoToken}@github.com/${repo}.git`;
 
 function execPromise(command: string):Promise<String> {
 	return new Promise((resolve, reject) => {
-		exec(command, (error, stdout, stderr) => {
+		exec(command, (error, stdout) => {
 			if (error) {
 				reject(error);
 				return;
