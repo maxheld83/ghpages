@@ -1,0 +1,10 @@
+name: "Deploy to GitHub Pages"
+description: "Container Action to Deploy to GitHub Pages"
+author: "Max Held"
+runs:
+  using: "docker"
+  image: "docker://alpine/git:latest"
+  entrypoint: "/entrypoint.sh"
+branding:
+  icon: "upload-cloud"
+  color: "blue"
