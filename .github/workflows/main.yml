@@ -1,0 +1,16 @@
+name: Deployment
+
+"on":
+  - push
+  - pull_request
+
+jobs:
+  deploy_ghpages:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - run: echo $GITHUB_SHA >> public/index.html
+      - uses: ./
+        env:
+          BUILD_DIR: public/
+          GH_PAT: ${{ secrets.GH_PAT }}
