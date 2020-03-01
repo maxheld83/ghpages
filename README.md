@@ -1,7 +1,7 @@
 # GitHub Action to Deploy Static Assets to GitHub Pages
 
 <!-- badges: start -->
-[![Actions Status](https://github.com/maxheld83/ghpages/workflows/.github/workflows/main.yml/badge.svg)](https://github.com/maxheld83/ghpages/actions)
+[![Actions Status](https://github.com/maxheld83/ghpages/workflows/Deployment/badge.svg)](https://github.com/maxheld83/ghpages/actions)
 <!-- badges: end -->
 
 This action simply lets you deploy arbitrary folders of static content from your workflow's working directory (`/github/workspace`) to [GitHub pages](https://pages.github.com).
