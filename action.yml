@@ -1,4 +1,4 @@
-name: "Deploy to GitHub Pages"
+name: "Deploy to GitHub Pages with Container"
 description: "Container Action to Deploy to GitHub Pages"
 author: "Max Held"
 runs:
