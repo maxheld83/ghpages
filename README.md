@@ -12,7 +12,7 @@ Remember that you may also have to adjust your [repository settings](https://hel
 
 Because this action deploys to separate, "deploy-only" branches, you can not use it if you want to deploy from a repo subdirectory such as `docs/`.
 In those cases you really don't need a GitHub Action, because you would be committing the build artifacts yourself.
-For details see the [GitHub Pages Documentation](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/). 
+For details see the [GitHub Pages Documentation](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).
 
 There are already great GitHub actions to use static site generators *and* then deploy to GitHub Pages (for [jekyll](https://github.com/helaili/jekyll-action), [jekyll](https://github.com/BryanSchuetz/jekyll-deploy-gh-pages), [zola](https://github.com/shalzz/zola-deploy-action) and surely many more to come).
 This action isn't that, though I've borrowed much of the git action from these works.
@@ -50,7 +50,7 @@ You can also pass `.` if you want to push your repository root.
 
 ## Example Usage
 
-```
+```yaml
 name: Deployment
 
 "on":
