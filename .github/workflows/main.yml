@@ -13,4 +13,3 @@ jobs:
       - uses: ./
         env:
           BUILD_DIR: public/
-          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
