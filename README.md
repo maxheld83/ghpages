@@ -60,5 +60,5 @@ jobs:
       - uses: maxheld83/ghpages@v0.3.0
         env:
           BUILD_DIR: public/
-          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
