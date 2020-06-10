@@ -10,7 +10,7 @@ If you are running this action inside an [organization or user repository](https
 
 Remember that you may also have to adjust your [repository settings](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).
 
-Because this action deploys to separate, "deploy-only" branches, you can not use it if you want to deploy from a repo subdirectory such as `docs/`.
+Because this action deploys to separate, "deploy-only" branches, you cannot use it if you want to deploy from a repo subdirectory such as `docs/`.
 In those cases you really don't need a GitHub Action, because you would be committing the build artifacts yourself.
 For details see the [GitHub Pages Documentation](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/).
 
@@ -33,13 +33,7 @@ None.
 
 Deployment to GitHub pages happens by `git push`ing to the `gh-pages` (or `master`) branch.
 To authorise this, the GitHub action needs a secret.
-For now, somewhat confusingly, the `GITHUB_TOKEN` [available for every repo](https://developer.github.com/actions/creating-workflows/storing-secrets/) *does* suffice to push to `gh-pages`, but *does not* suffice to trigger a  page build on GitHub, or even propagate the content to the GitHub content-delivery network.
-
-You therefore **have to [create a custom Personal Access Token (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)** much like you'd do for external services (say, Travis). This token must be created with `repo` permissions in order to deploy to Github Pages.
-You then have to paste this token into the GitHub UI as a secret under the name `GH_PAT` (repository settings/secrets) and call it in the action as in the below.
-
-I've asked GitHub to streamline this process.
-The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpages/issues/1).
+The action uses the `GITHUB_TOKEN` [available for every repo](https://developer.github.com/actions/creating-workflows/storing-secrets/) to authenticate.
 
 
 ## Environment Variables
@@ -66,5 +60,5 @@ jobs:
       - uses: maxheld83/ghpages@v0.3.0
         env:
           BUILD_DIR: public/
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_PAT: ${{ secrets.GITHUB_TOKEN }}
 ```
