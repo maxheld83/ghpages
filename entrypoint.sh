@@ -17,6 +17,12 @@ if [[ "$REPONAME" == "$GHIO" ]]; then
 else
   REMOTE_BRANCH="gh-pages"
 fi && \
+if [[ -z "$GH_CNAME" ]]; then
+  echo "No CNAME is set"
+else
+  echo "Setting CNAME"
+  echo $GH_CNAME > CNAME
+fi && \
 git init && \
 git config user.name "${GITHUB_ACTOR}" && \
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
