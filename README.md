@@ -1,5 +1,9 @@
 # GitHub Action to Deploy Static Assets to GitHub Pages
 
+**This action has been deprecated.
+There's [now "native" support for publishing to GitHub Pages using an official GitHub action by GitHub](https://github.com/actions/deploy-pages).
+It is much better than this approach.**
+
 <!-- badges: start -->
 [![Actions Status](https://github.com/maxheld83/ghpages/workflows/Deployment/badge.svg)](https://github.com/maxheld83/ghpages/actions)
 <!-- badges: end -->
