@@ -48,9 +48,10 @@ The discussion is documented [here](https://github.com/maxheld83/ghaction-ghpage
 
 ## Environment Variables
 
-Just `BUILD_DIR`, the build directory relative to your repository root.
-You can also pass `.` if you want to push your repository root.
-
+|Variable|Meaning|
+|-----|-----|
+|`BUILD_DIR`|The build directory relative to your repository root. You can also pass `.` if you want to push your repository root.|
+|`GH_CNAME`|Your custom domain name. Will be written to the `CNAME` file in your `BUILD_DIR`.|
 
 ## Example Usage
 
